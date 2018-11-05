@@ -45,7 +45,10 @@ public class TestSend {
 		mc1.handler(message -> {
 			Entity entity = (Entity) message.body();
 			System.out.println("mc1 got msg from:" + entity.getName());
-			message.reply("mc1 got message");
+			message.reply("mc1 got message", reply -> {
+				System.out.println(reply.result().body());
+				vertx.close();
+			});
 		});
 
 		MessageConsumer<Entity> mc2 = eb.consumer("ADDRESS");
@@ -62,6 +65,7 @@ public class TestSend {
 		eb.send("ADDRESS", entity, req -> {
 			if (req.succeeded()) {
 				System.out.println("Get reply:" + req.result().body());
+				req.result().reply("666");
 			}
 		});
 		
