@@ -16,18 +16,17 @@ public class TestNetServer {
 		server.connectHandler(socket -> {
 			socket.handler(buffer -> {
 				System.out.println("Get:" + buffer.length());
-				socket.closeHandler(res -> {
-					System.out.println("Socket closed");
-					server.close(serverRes -> {
-						if (serverRes.succeeded()) {
-							System.out.println("Server closed");
-							vertx.close();
-						} else {
-							System.out.println("Server closed failed");
-						}
-					});
+				server.close(serverRes -> {
+					if (serverRes.succeeded()) {
+						System.out.println("Server closed");
+						vertx.close();
+					} else {
+						System.out.println("Server closed failed");
+					}
 				});
-				socket.close();
+			});
+			socket.closeHandler(res -> {
+				System.out.println("Socket closed");
 			});
 		});
 		server.listen(9000, "localhost", res -> {
