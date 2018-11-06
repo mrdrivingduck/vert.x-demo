@@ -16,6 +16,11 @@ public class TestNetServer {
 		server.connectHandler(socket -> {
 			socket.handler(buffer -> {
 				System.out.println("Get:" + buffer.length());
+				socket.write("I love u");
+				socket.close();
+			});
+			socket.closeHandler(res -> {
+				System.out.println("Socket closed");
 				server.close(serverRes -> {
 					if (serverRes.succeeded()) {
 						System.out.println("Server closed");
@@ -24,9 +29,6 @@ public class TestNetServer {
 						System.out.println("Server closed failed");
 					}
 				});
-			});
-			socket.closeHandler(res -> {
-				System.out.println("Socket closed");
 			});
 		});
 		server.listen(9000, "localhost", res -> {
