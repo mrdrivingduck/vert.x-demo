@@ -1,4 +1,4 @@
-package iot.zjt.vertx.demo.eventbus;
+package iot.zjt.vertx.demo.core.eventbus;
 
 public class Entity {
 

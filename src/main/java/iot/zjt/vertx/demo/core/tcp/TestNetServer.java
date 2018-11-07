@@ -1,4 +1,4 @@
-package iot.zjt.vertx.demo.tcp;
+package iot.zjt.vertx.demo.core.tcp;
 
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;

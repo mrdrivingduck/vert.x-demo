@@ -1,4 +1,4 @@
-package iot.zjt.vertx.demo.http;
+package iot.zjt.vertx.demo.core.http;
 
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpClient;

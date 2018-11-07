@@ -1,4 +1,4 @@
-package iot.zjt.vertx.demo.abstractverticle;
+package iot.zjt.vertx.demo.core.abstractverticle;
 
 import io.vertx.core.AbstractVerticle;
 
