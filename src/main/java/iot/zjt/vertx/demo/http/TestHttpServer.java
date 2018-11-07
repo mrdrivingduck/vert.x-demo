@@ -1,8 +1,8 @@
 package iot.zjt.vertx.demo.http;
 
-import io.vertx.core.MultiMap;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
+import io.vertx.core.http.HttpClient;
 import io.vertx.core.http.HttpServer;
 
 public class TestHttpServer {
@@ -18,10 +18,10 @@ public class TestHttpServer {
 			System.out.println(request.version());
 			System.out.println(request.uri());
 			System.out.println(request.path());
-			MultiMap headers = request.headers();
-			MultiMap params = request.params();
-			headers.get("...");
-			params.get("...");
+			// MultiMap headers = request.headers();
+			// MultiMap params = request.params();
+			// headers.get("...");
+			// params.get("...");
 
 			Buffer totalBuffer = Buffer.buffer();
 			request.handler(buffer -> {
@@ -34,7 +34,11 @@ public class TestHttpServer {
 				System.out.println("Get:" + totalBuffer.length());
 				Buffer buf = Buffer.buffer();
 				buf.appendInt(1024).appendString("I love u");
-				request.response().write(buf).end();
+				request.response()
+					// .putHeader("Content-Length", Integer.toString(buf.length()))
+					.setChunked(true)
+					// .write(buf).end();
+					.end(buf);
 			});
 		});
 		server.listen(9001, "localhost", res -> {
@@ -43,6 +47,13 @@ public class TestHttpServer {
 			} else {
 				System.out.println("Server failed to bind");
 			}
+		});
+
+		HttpClient client = vertx.createHttpClient();
+		client.getNow(9001, "localhost", "/", response -> {
+			response.bodyHandler(totalBuffer -> {
+				System.out.println(totalBuffer.length());
+			});
 		});
 
 	}
