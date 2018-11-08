@@ -15,8 +15,8 @@ public class TestNextHandler {
         HttpServer server = vertx.createHttpServer();
         Router router = Router.router(vertx);
 
-        Route route = router.route("/test/next/handler/");
-        route.handler(routingContext -> {
+        Route route1 = router.route("/test/next/handler/");
+        route1.handler(routingContext -> {
             HttpServerResponse response = routingContext.response();
             response.setChunked(true);
             response.write("route1\n");
@@ -29,7 +29,14 @@ public class TestNextHandler {
         }).blockingHandler(routingContext -> {
             HttpServerResponse response = routingContext.response();
             response.write("route3\n");
-            // routingContext.next();
+            routingContext.next();
+            // routingContext.response().end();
+        });
+
+        Route route2 = router.route("/test/next/handler/");
+        route2.handler(routingContext -> {
+            HttpServerResponse response = routingContext.response();
+            response.write("route4\n");
             routingContext.response().end();
         });
 
