@@ -6,6 +6,10 @@ import io.vertx.core.http.HttpClientRequest;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpServer;
 
+/**
+ * @author Mr Dk.
+ */
+
 public class Test100Continue {
 
     public static void main(String[] args) {

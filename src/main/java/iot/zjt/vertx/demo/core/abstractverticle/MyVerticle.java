@@ -2,6 +2,10 @@ package iot.zjt.vertx.demo.core.abstractverticle;
 
 import io.vertx.core.AbstractVerticle;
 
+/**
+ * @author Mr Dk.
+ */
+
 public class MyVerticle extends AbstractVerticle {
 
     @Override

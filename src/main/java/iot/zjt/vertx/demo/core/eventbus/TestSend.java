@@ -6,6 +6,10 @@ import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.eventbus.MessageCodec;
 import io.vertx.core.eventbus.MessageConsumer;
 
+/**
+ * @author Mr Dk.
+ */
+
 public class TestSend {
 
 	public static void main(String[] args) {

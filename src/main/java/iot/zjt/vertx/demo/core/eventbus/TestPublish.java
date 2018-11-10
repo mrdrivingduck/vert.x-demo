@@ -3,6 +3,10 @@ package iot.zjt.vertx.demo.core.eventbus;
 import io.vertx.core.Vertx;
 import io.vertx.core.eventbus.EventBus;
 
+/**
+ * @author Mr Dk.
+ */
+
 public class TestPublish {
 
 	public static void main(String[] args) {

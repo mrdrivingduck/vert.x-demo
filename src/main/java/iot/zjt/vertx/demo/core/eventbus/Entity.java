@@ -1,5 +1,9 @@
 package iot.zjt.vertx.demo.core.eventbus;
 
+/**
+ * @author Mr Dk.
+ */
+
 public class Entity {
 
     private String name;

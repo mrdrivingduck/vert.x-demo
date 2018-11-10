@@ -4,6 +4,10 @@ import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 
+/**
+ * @author Mr Dk.
+ */
+
 public class TestAbstractVerticle {
 
 	public static void main(String[] args) {
