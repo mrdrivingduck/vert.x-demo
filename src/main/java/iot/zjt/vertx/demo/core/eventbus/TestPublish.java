@@ -9,21 +9,21 @@ import io.vertx.core.eventbus.EventBus;
 
 public class TestPublish {
 
-	public static void main(String[] args) {
-		
-		Vertx vertx = Vertx.vertx();
-		EventBus eb = vertx.eventBus();
+    public static void main(String[] args) {
+        
+        Vertx vertx = Vertx.vertx();
+        EventBus eb = vertx.eventBus();
 
-		eb.consumer("ADDRESS", message -> {
-			System.out.println(message.body());
-		});
+        eb.consumer("ADDRESS", message -> {
+            System.out.println(message.body());
+        });
 
-		eb.consumer("ADDRESS", message -> {
-			System.out.println(message.body());
-		});
+        eb.consumer("ADDRESS", message -> {
+            System.out.println(message.body());
+        });
 
-		eb.publish("ADDRESS", "2345");
-		
-	}
+        eb.publish("ADDRESS", "2345");
+        
+    }
 
 }
